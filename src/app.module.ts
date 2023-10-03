@@ -5,12 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CatsModule } from './cats/cats.module';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://personal:1QeSs0SWoQuQzkS1@cluster.xzzlwzb.mongodb.net/?retryWrites=true&w=majority',
-    ),
-    CatsModule,
-  ],
+  imports: [MongooseModule.forRoot(process.env.DATABASE_URL), CatsModule],
   controllers: [AppController],
   providers: [AppService],
 })
