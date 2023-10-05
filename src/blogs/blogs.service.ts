@@ -14,6 +14,6 @@ export class BlogsService {
     }
   
     async findAll(): Promise<Blog[]> {
-      return this.blogModel.find().exec();
+      return this.blogModel.find().sort({ date :'desc' }).exec();
     }
 }
