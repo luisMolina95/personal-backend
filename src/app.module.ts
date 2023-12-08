@@ -3,10 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BlogModule } from './blogs/blog.module';
-import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
+import { CacheModule } from '@nestjs/cache-manager';
 import { type RedisClientOptions } from 'redis';
 import * as redisStore from 'cache-manager-redis-store';
-import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -20,12 +19,6 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     BlogModule,
   ],
   controllers: [AppController],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
-    AppService,
-  ],
+  providers: [AppService],
 })
 export class AppModule {}
