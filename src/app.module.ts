@@ -12,6 +12,7 @@ import * as redisStore from 'cache-manager-redis-store';
     CacheModule.register<RedisClientOptions>({
       url: process.env.REDIS_URL,
       store: redisStore,
+      isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.DATABASE_URL, {
       dbName: 'personal',
