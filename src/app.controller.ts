@@ -9,7 +9,7 @@ export class AppController {
 
   @Get()
   @CacheKey('hello')
-  getHello(): string {
+  getHello(): Promise<string> {
     return this.appService.getHello();
   }
 }
